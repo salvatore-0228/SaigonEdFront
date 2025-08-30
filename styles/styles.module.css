@@ -1,0 +1,68 @@
+.section_heading {
+    /* font-size: 1rem; */
+    font-weight: 700;
+}
+
+.section_heading::before {
+    content: "";
+    display: block;
+    height: 0.5rem;
+    /* h-2 = 8px */
+    width: 100%;
+    background-color: black;
+}
+
+.section_heading::after {
+    content: "";
+    display: block;
+    height: 1px;
+    /* h-px = 1px */
+    width: 100%;
+    background-color: black;
+}
+
+.sub_heading {
+    /* font-size: 1rem; */
+    font-weight: 700;
+}
+
+
+.para {
+
+    text-align: justify;
+    /* font-size: small; */
+}
+
+.special_article {
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.special_article::before {
+    content: "";
+    display: block;
+    height: 0.5rem;
+    width: 100%;
+    background-color: black;
+}
+
+.special_article::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: black;
+}
+
+.article_italic_subtitle {
+    font-style: italic;
+    color: #555;
+}
+
+.article_italic_byine {
+    font-style: italic;
+    font-size: 0.7rem;
+    width: 33%;
+    text-align: justify;
+    line-height: normal;
+}
