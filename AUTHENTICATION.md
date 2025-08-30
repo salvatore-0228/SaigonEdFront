@@ -1,21 +1,30 @@
 # Authentication System
 
-This project now includes a complete authentication system that connects the signin and signup pages to the rest of the application.
+This project includes a comprehensive authentication system with backend communication that handles user registration, login, session management, and security features.
 
 ## Features
 
 - **User Registration**: Users can create new accounts with name, email, and password
 - **User Login**: Existing users can sign in with their credentials
-- **Session Management**: User sessions are persisted using localStorage
+- **JWT Token Management**: Secure token-based authentication with automatic refresh
+- **Session Management**: Persistent sessions with automatic token validation
 - **Protected Routes**: Routes can be protected to require authentication
+- **Password Management**: Password reset and change functionality
+- **Email Verification**: Optional email verification for new accounts
+- **Error Handling**: Comprehensive error handling with user-friendly messages
 - **User Interface**: Authentication status is displayed in the sidebar and throughout the app
 - **Toast Notifications**: Success and error messages for authentication actions
+- **Configuration Management**: Environment-based configuration for different deployment scenarios
 
 ## Components
 
 ### Core Authentication Files
 
-- `lib/auth.ts` - Authentication utilities and user management
+- `lib/auth.ts` - Authentication utilities and user management (updated for backend API)
+- `lib/auth-api.ts` - Authentication API service layer
+- `lib/http-client.ts` - HTTP client with authentication and error handling
+- `lib/token-utils.ts` - JWT token management and utilities
+- `lib/config.ts` - Application configuration management
 - `hooks/use-auth.tsx` - React hook for authentication state management
 - `components/auth/protected-route.tsx` - Component to protect routes
 - `components/auth/landing-page.tsx` - Landing page for unauthenticated users
@@ -38,14 +47,63 @@ This project now includes a complete authentication system that connects the sig
 import { useAuth } from '@/hooks/use-auth'
 
 function MyComponent() {
-  const { user, isAuthenticated, signIn, signUp, signOut } = useAuth()
+  const { user, isAuthenticated, isLoading, signIn, signUp, signOut } = useAuth()
+  
+  // Show loading state while checking authentication
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
   
   // Check if user is authenticated
   if (isAuthenticated) {
-    return <div>Welcome, {user?.name}!</div>
+    return (
+      <div>
+        Welcome, {user?.name}!
+        {user?.emailVerified ? ' ✓' : ' (Email not verified)'}
+      </div>
+    )
   }
   
   return <div>Please sign in</div>
+}
+```
+
+### Advanced Authentication Usage
+
+```tsx
+import { auth } from '@/lib/auth'
+import { authAPI } from '@/lib/auth-api'
+import { tokenUtils, tokenStorage } from '@/lib/token-utils'
+
+// Direct API usage
+async function handleCustomSignIn(email: string, password: string) {
+  try {
+    const response = await authAPI.signIn({ email, password })
+    console.log('User signed in:', response.user)
+  } catch (error) {
+    console.error('Sign in failed:', error.message)
+  }
+}
+
+// Token management
+function checkTokenStatus() {
+  const isAuth = tokenUtils.isAuthenticated()
+  const timeUntilExpiry = tokenUtils.getTimeUntilExpiry()
+  const shouldRefresh = tokenStorage.shouldRefreshToken()
+  
+  console.log('Authenticated:', isAuth)
+  console.log('Time until expiry:', timeUntilExpiry, 'minutes')
+  console.log('Should refresh:', shouldRefresh)
+}
+
+// Profile management
+async function updateUserProfile(name: string) {
+  try {
+    const updatedUser = await auth.updateProfile({ name })
+    console.log('Profile updated:', updatedUser)
+  } catch (error) {
+    console.error('Profile update failed:', error.message)
+  }
 }
 ```
 
@@ -104,24 +162,95 @@ The authentication system is integrated into the sidebar navigation:
    - Can access protected content throughout the app
    - Can sign out from sidebar or user dropdown
 
-## Security Notes
+## Backend Communication
 
-This is a client-side authentication system for demonstration purposes. In a production environment, you should:
+The authentication system now communicates with a backend API instead of using mock localStorage data. Key features include:
 
-- Use a proper backend authentication service
-- Implement password hashing and salting
-- Use secure session management (JWT tokens, HTTP-only cookies)
-- Add rate limiting and brute force protection
-- Implement proper error handling and logging
-- Use HTTPS for all authentication requests
+### API Integration
+- **RESTful API calls** for all authentication operations
+- **JWT token-based authentication** with automatic token management
+- **Configurable API endpoints** through environment variables
+- **Automatic token refresh** before expiration
+- **Comprehensive error handling** with user-friendly messages
+
+### Token Management
+- **Secure token storage** in localStorage with configurable keys
+- **JWT token decoding** for client-side user information
+- **Token expiration checking** and automatic refresh
+- **Token cleanup** on logout and authentication errors
+
+### Configuration
+Set up your environment variables by creating a `.env.local` file:
+
+```env
+# API Configuration
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3001/api
+# For production:
+# NEXT_PUBLIC_API_BASE_URL=https://api.yourdomain.com/api
+
+# Authentication Configuration
+NEXT_PUBLIC_AUTH_TOKEN_KEY=auth_token
+NEXT_PUBLIC_REFRESH_TOKEN_KEY=refresh_token
+NEXT_PUBLIC_TOKEN_EXPIRY_BUFFER=5
+
+# Feature Flags
+NEXT_PUBLIC_ENABLE_EMAIL_VERIFICATION=true
+NEXT_PUBLIC_ENABLE_PASSWORD_RESET=true
+NEXT_PUBLIC_ENABLE_SOCIAL_LOGIN=false
+```
+
+## API Endpoints
+
+The authentication system expects the following backend endpoints:
+
+### Authentication Endpoints
+- `POST /auth/signin` - User login
+- `POST /auth/signup` - User registration  
+- `POST /auth/signout` - User logout
+- `GET /auth/me` - Get current user profile
+- `POST /auth/refresh` - Refresh JWT token
+
+### Password Management
+- `POST /auth/forgot-password` - Request password reset
+- `POST /auth/reset-password` - Reset password with token
+- `POST /auth/change-password` - Change password (authenticated)
+
+### Email Verification
+- `POST /auth/verify-email` - Verify email with token
+- `POST /auth/resend-verification` - Resend verification email
+
+### Profile Management
+- `PATCH /auth/profile` - Update user profile
+
+## Security Features
+
+The authentication system includes several security features:
+
+- **JWT token validation** with expiration checking
+- **Automatic token refresh** to maintain sessions
+- **Secure error handling** that doesn't expose sensitive information
+- **Request timeout protection** to prevent hanging requests
+- **Token cleanup** on authentication failures
+- **Configurable security settings** through environment variables
+
+For production deployment, ensure:
+- Use HTTPS for all API communication
+- Configure proper CORS settings on the backend
+- Implement rate limiting on authentication endpoints
+- Use secure, HTTP-only cookies for refresh tokens (if supported by backend)
+- Enable proper logging and monitoring
 
 ## File Structure
 
 ```
 ├── lib/
-│   └── auth.ts                    # Authentication utilities
+│   ├── auth.ts                    # Authentication utilities (backend integration)
+│   ├── auth-api.ts               # Authentication API service layer
+│   ├── http-client.ts            # HTTP client with auth and error handling
+│   ├── token-utils.ts            # JWT token management utilities
+│   └── config.ts                 # Application configuration
 ├── hooks/
-│   └── use-auth.tsx              # Authentication hook
+│   └── use-auth.tsx              # Authentication hook (updated for async)
 ├── components/auth/
 │   ├── signin-form.tsx           # Sign in form
 │   ├── signup-form.tsx           # Sign up form

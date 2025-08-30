@@ -13,14 +13,16 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-primary/20 dark:bg-gray-900/95">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black backdrop-blur-sm border-b border-primary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
                      {/* Logo */}
            <div className="flex items-center space-x-4">
-             <div className="relative w-16 h-16">
-               <img src="/images/tiger-logo.png" alt="Asian Tigers Group" className="w-full h-full object-contain" />
-             </div>
+             <a href="/">
+               <div className="relative w-16 h-16">
+                 <img src="/images/tiger-logo.png" alt="Asian Tigers Group" className="w-full h-full object-contain" />
+               </div>
+             </a>
              <div className="hidden sm:block">
                <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                  Going Global

@@ -17,73 +17,108 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    /* Base colors - Light theme with metallic accents */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 8%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 0 0% 8%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 142 76% 36%;
+    --popover-foreground: 0 0% 8%;
+    
+    /* Metallic primary - Silver/Steel */
+    --primary: 0 0% 25%;
     --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 217 91% 60%;
+    
+    /* Secondary - Light silver */
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 0 0% 15%;
+    
+    /* Muted - Soft grays */
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 45%;
+    
+    /* Accent - Metallic gold/bronze */
+    --accent: 45 25% 35%;
     --accent-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 142 76% 36%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    
+    /* Borders and inputs */
+    --border: 0 0% 87%;
+    --input: 0 0% 92%;
+    --ring: 0 0% 25%;
+    
+    /* Charts with metallic tones */
+    --chart-1: 0 0% 20%;
+    --chart-2: 45 15% 25%;
+    --chart-3: 0 0% 35%;
+    --chart-4: 45 25% 30%;
+    --chart-5: 0 0% 40%;
+    
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 142 76% 36%;
+    
+    /* Sidebar with metallic theme */
+    --sidebar-background: 0 0% 96%;
+    --sidebar-foreground: 0 0% 15%;
+    --sidebar-primary: 0 0% 25%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 217 91% 60%;
+    --sidebar-accent: 45 25% 35%;
     --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 142 76% 36%;
+    --sidebar-border: 0 0% 87%;
+    --sidebar-ring: 0 0% 25%;
   }
   .dark {
-    --background: 220 13% 18%;
-    --foreground: 0 0% 98%;
-    --card: 220 13% 18%;
-    --card-foreground: 0 0% 98%;
-    --popover: 220 13% 18%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 142 76% 36%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 220 13% 25%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 220 13% 25%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 217 91% 60%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
+    /* Dark theme with metallic accents */
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+    
+    /* Metallic primary - Lighter silver for dark mode */
+    --primary: 0 0% 75%;
+    --primary-foreground: 0 0% 8%;
+    
+    /* Secondary - Dark silver */
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 85%;
+    
+    /* Muted - Dark grays */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    
+    /* Accent - Brighter metallic gold for dark mode */
+    --accent: 45 40% 55%;
+    --accent-foreground: 0 0% 8%;
+    
+    /* Destructive */
+    --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 13% 25%;
-    --input: 220 13% 25%;
-    --ring: 142 76% 36%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 220 13% 18%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 142 76% 36%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 217 91% 60%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 220 13% 25%;
-    --sidebar-ring: 142 76% 36%;
+    
+    /* Borders and inputs */
+    --border: 0 0% 20%;
+    --input: 0 0% 18%;
+    --ring: 0 0% 75%;
+    
+    /* Charts with metallic tones for dark mode */
+    --chart-1: 0 0% 80%;
+    --chart-2: 45 30% 65%;
+    --chart-3: 0 0% 65%;
+    --chart-4: 45 40% 55%;
+    --chart-5: 0 0% 55%;
+    
+    /* Sidebar with dark metallic theme */
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 85%;
+    --sidebar-primary: 0 0% 75%;
+    --sidebar-primary-foreground: 0 0% 8%;
+    --sidebar-accent: 45 40% 55%;
+    --sidebar-accent-foreground: 0 0% 8%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 0 0% 75%;
   }
 }
 

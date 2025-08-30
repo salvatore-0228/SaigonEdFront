@@ -3,6 +3,7 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ProtectedRoute } from "@/components/auth/protected-route";
 
 interface TableOfContentsProps {
     // onBackClick: () => void
@@ -96,60 +97,62 @@ export default function ContentsPage() {
     )
 
     return (
-        <div className="h-full w-full lg:p-[1vw] p-[5vw] dark:bg-gray-900 dark:text-white lg:overflow-hidden overflow-y-scroll scrollbar-thin scrollbar-thumb-red-500 scrollbar-track-gray-200">
-            <div className="flex lg:flex-row flex-col  lg:gap-[2vw] gap-[1rem] lg:text-[0.8dvw] h-full" id="container" style={{ lineHeight: `${line_height}px` }}>
-                <div className="flex flex-col lg:w-1/2 gap-[1rem] justify-between">
-                    <div className="aspect-[16/9]">
-                        <div className="videoWrapper" style={{ height: "100%" }}>
-                            {/* <video src="/videos/Saigon Ed Guide landscape.mp4" style={{ height: "100%", margin: "auto", bottom: "1rem" }} controls></video>
-                             */}
+        <ProtectedRoute>
+            <div className="h-full w-full lg:p-[1vw] p-[5vw] dark:bg-gray-900 dark:text-white lg:overflow-hidden overflow-y-scroll scrollbar-thin scrollbar-thumb-red-500 scrollbar-track-gray-200">
+                <div className="flex lg:flex-row flex-col  lg:gap-[2vw] gap-[1rem] lg:text-[0.8dvw] h-full" id="container" style={{ lineHeight: `${line_height}px` }}>
+                    <div className="flex flex-col lg:w-1/2 gap-[1rem] justify-between">
+                        <div className="aspect-[16/9]">
+                            <div className="videoWrapper" style={{ height: "100%" }}>
+                                {/* <video src="/videos/Saigon Ed Guide landscape.mp4" style={{ height: "100%", margin: "auto", bottom: "1rem" }} controls></video>
+                                 */}
+                                <iframe
+                                    src="https://www.youtube.com/embed/Zh7MTziRaaw"
+                                    title="Vercel Ship Keynote: Introducing the frontend cloud"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    style={{ width: "100%", margin: "auto", aspectRatio: "16/9", backgroundColor: "gray" }}
+                                // allowFullScreen
+                                />
+                            </div>
+                        </div>
+                        <div className="lg:columns-[2] gap-[1rem]" style={{ fontWeight: "bold" }}>
+                            {renderSection("PREPARATIONS", tableOfContentsData.preparations, "#000000", "#cccccc", "26")}
+                        </div>
+                    </div>
+                    <div className="flex lg:flex-row flex-col gap-[1dvw] lg:w-1/2">
+                        <div className="lg:w-1/2 flex flex-col lg:justify-between" style={{ fontWeight: "bold" }}>
+                            {renderSection("SOFT LANDING", tableOfContentsData.softLanding, "#3a4c63", "#9e9277", "142")}
+                            <div className="lg:flex-1 md:flex-1 w-full bg-black lg:mb-0 md:mb-0 mb-[1rem]" style={{alignContent: "center"}}>
+                                <img className="m-auto" src="/images/Going GLobal relocation guides white simple1.png" />
+                            </div>
+                        </div>
+                        <div className="lg:w-1/2 flex flex-col lg:justify-between lg:gap-0 gap-[1dvw]">
+                            {/* <video src="/videos/Saigon Ed Guide landscape.mp4" className="aspect-[16/9] w-full" controls></video> */}
                             <iframe
-                                src="https://www.youtube.com/embed/Zh7MTziRaaw"
+                                src="https://www.youtube.com/embed/FcjiOKa5hYs"
                                 title="Vercel Ship Keynote: Introducing the frontend cloud"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                style={{ width: "100%", margin: "auto", aspectRatio: "16/9", backgroundColor: "gray" }}
+                                style={{ width: "100%", aspectRatio: "16/9", backgroundColor: "gray" }}
                             // allowFullScreen
                             />
+                            <iframe
+                                src="https://www.youtube.com/embed/yU9IIdwKxyk"
+                                title="Vercel Ship Keynote: Introducing the frontend cloud"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                style={{ width: "100%", aspectRatio: "16/9", backgroundColor: "gray" }}
+                            // allowFullScreen
+                            />
+                            <iframe
+                                src="https://www.youtube.com/embed/fxZApwFDAq4"
+                                title="Vercel Ship Keynote: Introducing the frontend cloud"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                style={{ width: "100%", aspectRatio: "16/9", backgroundColor: "gray" }}
+                            />
+                            {/* <video src="/videos/Saigon Ed Guide landscape.mp4" className="aspect-[16/9] w-full" controls></video> */}
+                            {/* <video src="/videos/Saigon Ed Guide landscape.mp4" className="aspect-[16/9] w-full" controls></video> */}
                         </div>
-                    </div>
-                    <div className="lg:columns-[2] gap-[1rem]" style={{ fontWeight: "bold" }}>
-                        {renderSection("PREPARATIONS", tableOfContentsData.preparations, "#000000", "#cccccc", "26")}
-                    </div>
-                </div>
-                <div className="flex lg:flex-row flex-col gap-[1dvw] lg:w-1/2">
-                    <div className="lg:w-1/2 flex flex-col lg:justify-between" style={{ fontWeight: "bold" }}>
-                        {renderSection("SOFT LANDING", tableOfContentsData.softLanding, "#3a4c63", "#9e9277", "142")}
-                        <div className="lg:flex-1 md:flex-1 w-full bg-black lg:mb-0 md:mb-0 mb-[1rem]" style={{alignContent: "center"}}>
-                            <img className="m-auto" src="/images/Going GLobal relocation guides white simple1.png" />
-                        </div>
-                    </div>
-                    <div className="lg:w-1/2 flex flex-col lg:justify-between lg:gap-0 gap-[1dvw]">
-                        {/* <video src="/videos/Saigon Ed Guide landscape.mp4" className="aspect-[16/9] w-full" controls></video> */}
-                        <iframe
-                            src="https://www.youtube.com/embed/FcjiOKa5hYs"
-                            title="Vercel Ship Keynote: Introducing the frontend cloud"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            style={{ width: "100%", aspectRatio: "16/9", backgroundColor: "gray" }}
-                        // allowFullScreen
-                        />
-                        <iframe
-                            src="https://www.youtube.com/embed/yU9IIdwKxyk"
-                            title="Vercel Ship Keynote: Introducing the frontend cloud"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            style={{ width: "100%", aspectRatio: "16/9", backgroundColor: "gray" }}
-                        // allowFullScreen
-                        />
-                        <iframe
-                            src="https://www.youtube.com/embed/fxZApwFDAq4"
-                            title="Vercel Ship Keynote: Introducing the frontend cloud"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            style={{ width: "100%", aspectRatio: "16/9", backgroundColor: "gray" }}
-                        />
-                        {/* <video src="/videos/Saigon Ed Guide landscape.mp4" className="aspect-[16/9] w-full" controls></video> */}
-                        {/* <video src="/videos/Saigon Ed Guide landscape.mp4" className="aspect-[16/9] w-full" controls></video> */}
                     </div>
                 </div>
             </div>
-        </div>
+        </ProtectedRoute>
     )
 }

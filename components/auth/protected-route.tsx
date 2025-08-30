@@ -20,7 +20,7 @@ export function ProtectedRoute({ children, fallback }: ProtectedRouteProps) {
   }, [isAuthenticated, isLoading, router])
 
   if (isLoading) {
-    return fallback || (
+    return  (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
       </div>
@@ -28,7 +28,15 @@ export function ProtectedRoute({ children, fallback }: ProtectedRouteProps) {
   }
 
   if (!isAuthenticated) {
-    return null
+    // Show a spinner or message while redirecting to signin
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div>
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-center text-lg text-gray-600">Redirecting to sign in...</p>
+        </div>
+      </div>
+    )
   }
 
   return <>{children}</>

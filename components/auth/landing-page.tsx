@@ -9,7 +9,6 @@ import { AboutSection } from '@/components/landing/about-section'
 export function LandingPage() {
   return (
     <div className="min-h-screen">
-      <Header />
       <main>
         <HeroSection />
         <FeaturesSection />

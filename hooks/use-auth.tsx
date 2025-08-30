@@ -22,18 +22,32 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   // Initialize auth state on mount
   useEffect(() => {
-    const user = auth.getCurrentUser()
-    setState({
-      user,
-      isAuthenticated: !!user,
-      isLoading: false
-    })
+    const initializeAuth = async () => {
+      try {
+        const user = await auth.getCurrentUser()
+        setState({
+          user,
+          isAuthenticated: !!user,
+          isLoading: false
+        })
+      } catch (error) {
+        console.warn('Failed to initialize auth:', error)
+        setState({
+          user: null,
+          isAuthenticated: false,
+          isLoading: false
+        })
+      }
+    }
+
+    initializeAuth()
   }, [])
 
   const signIn = async (email: string, password: string) => {
     setState(prev => ({ ...prev, isLoading: true }))
     try {
       const user = await auth.signIn(email, password)
+      console.log("Successful sign in!!!!!!!");
       setState({
         user,
         isAuthenticated: true,
@@ -92,6 +106,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 export function useAuth() {
   const context = useContext(AuthContext)
+  console.log("context", context)
   if (context === undefined) {
     throw new Error('useAuth must be used within an AuthProvider')
   }

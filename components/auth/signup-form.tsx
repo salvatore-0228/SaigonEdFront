@@ -68,9 +68,11 @@ export function SignUpForm() {
       <CardHeader className="text-center space-y-4">
         {/* Logo */}
         <div className="flex justify-center">
-          <div className="relative w-48 h-48">
-            <Image src="/images/tiger-logo.png" alt="Asian Tigers Group" fill className="object-contain" />
-          </div>
+          <Link href="/">
+            <div className="relative w-48 h-48">
+              <Image src="/images/tiger-logo.png" alt="Asian Tigers Group" fill className="object-contain" />
+            </div>
+          </Link>
         </div>
 
         <div className="space-y-2">
