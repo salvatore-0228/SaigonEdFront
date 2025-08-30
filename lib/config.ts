@@ -33,7 +33,7 @@ export interface AppConfig {
  */
 const defaultConfig: AppConfig = {
   api: {
-    baseUrl: 'http://localhost:3001/api',
+    baseUrl: 'https://saigonedserver.onrender.com/api',
     timeout: 30000, // 30 seconds
   },
   auth: {
