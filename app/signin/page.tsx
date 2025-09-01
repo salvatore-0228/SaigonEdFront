@@ -4,7 +4,7 @@ export default function SignInPage() {
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
         style={{ backgroundImage: "url(/images/ethereal-background.png)" }}
       />
       {/* Metallic Gradient Overlay */}

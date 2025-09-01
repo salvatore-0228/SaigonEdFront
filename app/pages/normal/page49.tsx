@@ -207,7 +207,7 @@ export default function Page49() {
                             (PYP and MYP), and the Career‑related Programme (CP) is rarer still. Families may find themselves in situations where a school offers the
                             IB Diploma for Years 12 and 13 but uses another curriculum for earlier years.
                         </div>
-                        <YoutubeEmbed className="lg:-translate-y-[0.3dvw] md:-translate-y-[0.3dvw]" videoId="9wl1Pa05dM0" />
+                        <YoutubeEmbed className="lg:-translate-y-[0.3dvw] md:-translate-y-[0.3dvw]" videoId="6mRI6Mcp5hM" />
                         {/* <iframe
                             src="https://www.youtube.com/embed/M3aAaY7AiEc?autoplay=1&mute=1"
                             title="Vercel Ship Keynote: Introducing the frontend cloud"

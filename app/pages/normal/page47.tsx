@@ -118,7 +118,7 @@ export default function Page47() {
                     </div>
                     <div className="" style={{ alignContent: "center" }}>
                         {/* <video className="aspect-[16/9]" src="/videos/Saigon Ed Guide landscape.mp4" style={{ width: "100%", margin: "auto" }} controls></video> */}
-                        <YoutubeEmbed className="lg:-translate-y-[0.3dvw] md:-translate-y-[0.3dvw]" videoId="9wl1Pa05dM0" />
+                        <YoutubeEmbed className="lg:-translate-y-[0.3dvw] md:-translate-y-[0.3dvw]" videoId="9LuuJa3t-m8" />
                     </div>
                 </div>
             </div>
