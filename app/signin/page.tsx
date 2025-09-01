@@ -8,7 +8,7 @@ export default function SignInPage() {
         style={{ backgroundImage: "url(/images/ethereal-background.png)" }}
       /> */}
       {/* Metallic Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-800/95 to-black/90"></div>
+      {/* <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-800/95 to-black/90"></div> */}
       {/* Content */}
       <div className="relative z-10 flex min-h-screen items-center justify-center p-4">
         <div className="w-full max-w-md">

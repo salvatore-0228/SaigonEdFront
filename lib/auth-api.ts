@@ -7,7 +7,7 @@ import { httpClient, type ApiResponse } from './http-client'
 
 // Request/Response Types
 export interface SignInRequest {
-  email: string
+  username: string
   password: string
 }
 

@@ -62,10 +62,10 @@ export const auth = {
   /**
    * Sign in existing user
    */
-  async signIn(email: string, password: string): Promise<User> {
+  async signIn(username: string, password: string): Promise<User> {
     try {
       const response = await authAPI.signIn({
-        email,
+        username,
         password
       })
       
@@ -73,7 +73,7 @@ export const auth = {
     } catch (error: any) {
       // Transform API errors to user-friendly messages
       if (error.status === 401) {
-        throw new Error('Invalid email or password')
+        throw new Error('Invalid username or password')
       } else if (error.status === 429) {
         throw new Error('Too many login attempts. Please try again later')
       } else if (error.status >= 500) {
