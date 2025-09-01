@@ -121,7 +121,7 @@ export default function ContentsPage() {
                     <div className="flex lg:flex-row flex-col gap-[1dvw] lg:w-1/2">
                         <div className="lg:w-1/2 flex flex-col lg:justify-between" style={{ fontWeight: "bold" }}>
                             {renderSection("SOFT LANDING", tableOfContentsData.softLanding, "#3a4c63", "#9e9277", "142")}
-                            <div className="lg:flex-1 md:flex-1 w-full bg-black lg:mb-0 md:mb-0 mb-[1rem]" style={{alignContent: "center"}}>
+                            <div className="lg:flex-1 md:flex-1 w-full lg:mb-0 md:mb-0 mb-[1rem]" style={{alignContent: "center"}}>
                                 <img className="m-auto" src="/images/tiger-tier.png" />
                             </div>
                         </div>
