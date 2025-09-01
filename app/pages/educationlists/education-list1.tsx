@@ -131,7 +131,7 @@ export default function EducationMainPage1() {
       qualifications: "IGCSE, A-Levels, and AP",
       fees: 'This school does not make their fees public.',
       linkpage: 1,
-      website: "",
+      website: "https://www.ssis.edu.vn/",
       youtube: "https://www.youtube.com/@SSISOfficial",
       facebook: "https://www.facebook.com/Saigon.South/",
       linkedin: "https://www.instagram.com/saigonsouthinternationalschool/",

@@ -91,6 +91,13 @@ export default function School1() {
                                 </div>
 
                                 <div className="flex flex-row gap-1 text-2xl mb-3" style={{ borderBottom: "1px solid gray", paddingTop: "1rem", paddingBottom: "1rem" }}>
+                                    <Link href="https://www.ssis.edu.vn/" passHref legacyBehavior>
+                                        <a target="_blank" rel="noopener noreferrer">
+                                            <div>
+                                                <img src="/images/btn/globe_btn.png" width={40} height={40} alt="no image" />
+                                            </div>
+                                        </a>
+                                    </Link>
                                     <Link href="https://www.youtube.com/@SSISOfficial" passHref legacyBehavior>
                                         <a target="_blank" rel="noopener noreferrer">
                                             <div>
