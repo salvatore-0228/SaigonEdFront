@@ -55,10 +55,6 @@ export function SignInForm() {
 
   return (
     <div className="">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 z-[-1]"
-        style={{ backgroundImage: "url(/images/ethereal-background.png)" }}
-      />
       <div className="flex flex-col gap-[1rem]">
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
@@ -68,7 +64,7 @@ export function SignInForm() {
             <Input
               id="username"
               type="text"
-              placeholder="Enter your magical username"
+              placeholder="USERNAME"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="h-12 border-2 border-primary/20 focus:border-primary transition-colors"
@@ -79,7 +75,7 @@ export function SignInForm() {
             <Input
               id="password"
               type={showPassword ? "text" : "password"}
-              placeholder="Enter your secret spell"
+              placeholder="PASSWORD"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="h-12 border-2 border-primary/20 focus:border-primary transition-colors pr-12"
