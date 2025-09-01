@@ -80,7 +80,7 @@ export default function Page5() {
             </div>
             <div className="flex flex-col lg:w-1/2 md:w-1/2 gap-[1rem] justify-between">
                 <div className="flex lg:flex-row md:flex-row flex-col gap-[2rem] lg:h-[calc(100% - 50dvw * 9/16)]" style={{ height: "calc(100% - 50dvw * 9/16)" }}>
-                    <div className="lg:w-1/2 gap-[1rem] border-t-4 border-b-4 border-black-60">
+                    <div className="lg:w-1/2 gap-[1rem] border-t-4 border-b-4 lg:my-[0.3dvw] md:my-[0.3dvw] border-black-60">
                         <div style={{ alignItems: "center", display: "flex", justifyContent: "center", height: "100%" }}>
                             <div className={`flex-1 relative text-center`} style={{ position: "relative", fontFamily: "auto" }}>
                                 <p
