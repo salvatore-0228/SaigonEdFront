@@ -1,11 +1,12 @@
-"use client"
+"use client";
 
-import { Button } from '@/components/ui/button'
-import { BookOpen, Sparkles, ArrowRight, Star, Globe } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+import { Button } from "@/components/ui/button";
+import { BookOpen, Sparkles, ArrowRight, Star, Globe } from "lucide-react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export function HeroSection() {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-gray-100 to-amber-50 overflow-hidden">
@@ -30,11 +31,15 @@ export function HeroSection() {
         <div className="max-w-4xl mx-auto">
           {/* Logo */}
           <div className="flex justify-center mb-8">
-            <a href="/">
+            <Link href="/">
               <div className="relative w-48 h-48">
-                <img src="/images/tiger-logo.png" alt="Asian Tigers Group" className="w-full h-full object-contain" />
+                <img
+                  src="/images/tiger-logo.png"
+                  alt="Asian Tigers Group"
+                  className="w-full h-full object-contain"
+                />
               </div>
-            </a>
+            </Link>
           </div>
 
           {/* Main Headline */}
@@ -47,8 +52,9 @@ export function HeroSection() {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-gray-800 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Discover comprehensive guides to international schools, educational opportunities,
-            and everything you need to navigate the world of global education.
+            Discover comprehensive guides to international schools, educational
+            opportunities, and everything you need to navigate the world of
+            global education.
           </p>
 
           {/* Features */}
@@ -70,7 +76,7 @@ export function HeroSection() {
           {/* Call to Action */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
-              onClick={() => router.push('/signup')}
+              onClick={() => router.push("/signup")}
               className="bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 hover:from-gray-700 hover:via-gray-600 hover:to-gray-500 border border-gray-600 shadow-2xl shadow-black/50 h-14 text-lg px-8 text-white"
             >
               <Sparkles className="w-5 h-5 mr-2 text-amber-400" />
@@ -80,7 +86,7 @@ export function HeroSection() {
 
             <Button
               variant="outline"
-              onClick={() => router.push('/signin')}
+              onClick={() => router.push("/signin")}
               className="h-14 text-lg px-8 border-2 border-gray-400/30 text-gray-300 bg-white/5 hover:bg-white/10 hover:text-white hover:border-gray-300/50 backdrop-blur-sm"
             >
               <BookOpen className="w-5 h-5 mr-2" />
@@ -90,18 +96,26 @@ export function HeroSection() {
 
           {/* Trust Indicators */}
           <div className="mt-16 pt-8 border-t border-gray-600/30">
-            <p className="text-gray-400 mb-6">Trusted by thousands of students and families worldwide</p>
+            <p className="text-gray-400 mb-6">
+              Trusted by thousands of students and families worldwide
+            </p>
             <div className="flex justify-center space-x-8">
               <div className="text-center backdrop-blur-sm bg-white/5 px-6 py-4 rounded-lg border border-white/10">
-                <div className="text-3xl font-bold bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent">10K+</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent">
+                  10K+
+                </div>
                 <div className="text-sm text-gray-400">Students Helped</div>
               </div>
               <div className="text-center backdrop-blur-sm bg-white/5 px-6 py-4 rounded-lg border border-white/10">
-                <div className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">50+</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-amber-400 to-amber-200 bg-clip-text text-transparent">
+                  50+
+                </div>
                 <div className="text-sm text-gray-400">Countries</div>
               </div>
               <div className="text-center backdrop-blur-sm bg-white/5 px-6 py-4 rounded-lg border border-white/10">
-                <div className="text-3xl font-bold bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent">98%</div>
+                <div className="text-3xl font-bold bg-gradient-to-r from-gray-300 to-white bg-clip-text text-transparent">
+                  98%
+                </div>
                 <div className="text-sm text-gray-400">Success Rate</div>
               </div>
             </div>
@@ -116,5 +130,5 @@ export function HeroSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

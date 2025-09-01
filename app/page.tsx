@@ -9,6 +9,7 @@ import CoverPage from "@/components/cover-page"
 import { useAuth } from "@/hooks/use-auth"
 import { useRouter } from "next/navigation"
 import { LandingPage } from "@/components/auth/landing-page"
+import SignInPage from "./signin/page"
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState<"video" | "shanghai" | "next" | "contents" | "history" | "history2" | "culture" | "reading" | "introduction">("video")
@@ -34,7 +35,8 @@ export default function Home() {
 
   // Show landing page if not authenticated
   if (!isAuthenticated) {
-    return <LandingPage />
+    // return <LandingPage />
+    return <SignInPage />
   }
 
   // Show video/cover content if authenticated

@@ -97,7 +97,7 @@ export default function ContentsPage() {
     )
 
     return (
-        <ProtectedRoute>
+        // <ProtectedRoute>
             <div className="h-full w-full lg:p-[1vw] p-[5vw] dark:bg-gray-900 dark:text-white lg:overflow-hidden overflow-y-scroll scrollbar-thin scrollbar-thumb-red-500 scrollbar-track-gray-200">
                 <div className="flex lg:flex-row flex-col  lg:gap-[2vw] gap-[1rem] lg:text-[0.8dvw] h-full" id="container" style={{ lineHeight: `${line_height}px` }}>
                     <div className="flex flex-col lg:w-1/2 gap-[1rem] justify-between">
@@ -122,7 +122,7 @@ export default function ContentsPage() {
                         <div className="lg:w-1/2 flex flex-col lg:justify-between" style={{ fontWeight: "bold" }}>
                             {renderSection("SOFT LANDING", tableOfContentsData.softLanding, "#3a4c63", "#9e9277", "142")}
                             <div className="lg:flex-1 md:flex-1 w-full bg-black lg:mb-0 md:mb-0 mb-[1rem]" style={{alignContent: "center"}}>
-                                <img className="m-auto" src="/images/Going GLobal relocation guides white simple1.png" />
+                                <img className="m-auto" src="/images/tiger-tier.png" />
                             </div>
                         </div>
                         <div className="lg:w-1/2 flex flex-col lg:justify-between lg:gap-0 gap-[1dvw]">
@@ -153,6 +153,6 @@ export default function ContentsPage() {
                     </div>
                 </div>
             </div>
-        </ProtectedRoute>
+        // </ProtectedRoute>
     )
 }

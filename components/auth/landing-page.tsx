@@ -14,7 +14,7 @@ export function LandingPage() {
         <FeaturesSection />
         <AboutSection />
       </main>
-      <Footer />
+      {/* <Footer />  */}
     </div>
   )
 }

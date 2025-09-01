@@ -5,6 +5,7 @@ import { BookOpen, Sparkles, Menu, X } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useAuth } from '@/hooks/use-auth'
+import Link from "next/link";
 import { cn } from '@/lib/utils'
 
 export function Header() {
@@ -18,11 +19,11 @@ export function Header() {
         <div className="flex justify-between items-center h-16">
                      {/* Logo */}
            <div className="flex items-center space-x-4">
-             <a href="/">
+             <Link href="/">
                <div className="relative w-16 h-16">
                  <img src="/images/tiger-logo.png" alt="Asian Tigers Group" className="w-full h-full object-contain" />
                </div>
-             </a>
+             </Link>
              <div className="hidden sm:block">
                <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                  Going Global

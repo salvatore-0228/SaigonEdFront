@@ -2,6 +2,7 @@
 
 import { BookOpen, Sparkles, Star, Mail, Phone, MapPin } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import Link from "next/link";
 
 export function Footer() {
   const router = useRouter()
@@ -123,13 +124,19 @@ export function Footer() {
             </div>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <a href="/privacy" className="text-gray-400 hover:text-primary transition-colors text-sm">
-                Privacy Policy
+                  <Link href="/privacy" className="text-gray-400 hover:text-primary transition-colors text-sm">
+                    Privacy Policy
+                  </Link>
               </a>
               <a href="/terms" className="text-gray-400 hover:text-primary transition-colors text-sm">
-                Terms of Service
+                  <Link href="/terms" className="text-gray-400 hover:text-primary transition-colors text-sm">
+                    Terms of Service
+                  </Link>
               </a>
               <a href="/cookies" className="text-gray-400 hover:text-primary transition-colors text-sm">
-                Cookie Policy
+                  <Link href="/cookies" className="text-gray-400 hover:text-primary transition-colors text-sm">
+                    Cookie Policy
+                  </Link>
               </a>
             </div>
           </div>
