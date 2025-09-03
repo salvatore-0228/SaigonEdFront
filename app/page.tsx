@@ -32,7 +32,7 @@ export default function Home() {
       </div>
     )
   }
-
+  console.log("isAuthenticated", isAuthenticated)
   // Show landing page if not authenticated
   if (!isAuthenticated) {
     // return <LandingPage />

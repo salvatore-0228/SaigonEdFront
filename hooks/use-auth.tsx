@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth, type User, type AuthState } from "@/lib/auth";
 import { useRouter } from "next/navigation";
+import { config } from "@/lib/config";
 
 interface AuthContextType extends AuthState {
   signIn: (email: string, password: string) => Promise<void>;
@@ -24,10 +25,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const initializeAuth = async () => {
       try {
-        const user = await auth.getCurrentUser();
+        const user = localStorage.getItem(config.auth.userData)
+        console.log(user, 'sdsdsd')
         setState({
-          user,
-          isAuthenticated: !!user,
+          user: user ? JSON.parse(user) : null,
+          isAuthenticated: !!user && (JSON.parse(user).username === "GoingGlobal"),
           isLoading: false,
         });
       } catch (error) {

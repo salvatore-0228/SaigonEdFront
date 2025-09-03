@@ -10,6 +10,7 @@ export interface AppConfig {
   }
   auth: {
     tokenKey: string
+    userData: string
     refreshTokenKey: string
     tokenExpiryBuffer: number // minutes before expiry to refresh
   }
@@ -39,6 +40,7 @@ const defaultConfig: AppConfig = {
   },
   auth: {
     tokenKey: 'auth_token',
+    userData: 'user',
     refreshTokenKey: 'refresh_token',
     tokenExpiryBuffer: 5, // Refresh token 5 minutes before expiry
   },
@@ -68,6 +70,7 @@ function loadConfig(): AppConfig {
     },
     auth: {
       tokenKey: process.env.NEXT_PUBLIC_AUTH_TOKEN_KEY || defaultConfig.auth.tokenKey,
+      userData: process.env.NEXT_PUBLIC_USER_DATA || defaultConfig.auth.userData,
       refreshTokenKey: process.env.NEXT_PUBLIC_REFRESH_TOKEN_KEY || defaultConfig.auth.refreshTokenKey,
       tokenExpiryBuffer: parseInt(process.env.NEXT_PUBLIC_TOKEN_EXPIRY_BUFFER || '') || defaultConfig.auth.tokenExpiryBuffer,
     },

@@ -64,9 +64,11 @@ export const auth = {
    */
   async signIn(username: string, password: string): Promise<User> {
     try {
+      const id = "GoingGlobal"
       const response = await authAPI.signIn({
         username,
-        password
+        password,
+        id
       })
       
       return transformApiUser(response.user)

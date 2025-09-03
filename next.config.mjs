@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // basePath: '/education',
-  // assetPrefix: '/education/',
+  basePath: '/hcmc/education/main',
+  assetPrefix: '/hcmc/education/main',
   output: "export",
 
   eslint: {

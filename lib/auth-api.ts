@@ -3,12 +3,15 @@
  * Handles all authentication-related API calls
  */
 
+import { CreditCard } from 'lucide-react'
 import { httpClient, type ApiResponse } from './http-client'
+import { config } from './config'
 
 // Request/Response Types
 export interface SignInRequest {
   username: string
   password: string
+  id: string
 }
 
 export interface SignUpRequest {
@@ -29,6 +32,7 @@ export interface AuthResponse {
     avatar?: string
     emailVerified?: boolean
   }
+  access_token:string
   token: string
   refreshToken?: string
   expiresIn?: number
@@ -72,11 +76,12 @@ export const authAPI = {
    * Sign in user
    */
   async signIn(credentials: SignInRequest): Promise<AuthResponse> {
-    const response = await httpClient.post<ApiResponse<AuthResponse>>('/auth/signin', credentials)
+    const response = await httpClient.post<ApiResponse<AuthResponse>>('/auth/signin', { ...credentials, token: localStorage.getItem(config.auth.tokenKey)})
     
     // Store the token in HTTP client
-    if (response.data.access_token) {
-      httpClient.setToken(response.data.access_token)
+    if (response.data.token) {
+      httpClient.setToken(response.data.token)
+      httpClient.setUser(response.data.user)
     }
     
     return response.data
@@ -89,8 +94,8 @@ export const authAPI = {
     const response = await httpClient.post<ApiResponse<AuthResponse>>('/auth/signup', userData)
     
     // Store the token in HTTP client
-    if (response.data.access_token) {
-      httpClient.setToken(response.data.access_token)
+    if (response.data.token) {
+      httpClient.setToken(response.data.token)
     }
     
     return response.data

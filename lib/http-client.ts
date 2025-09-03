@@ -36,6 +36,7 @@ export class HttpClient {
    */
   private getAuthToken(): string | null {
     if (typeof window === 'undefined') return null
+    console.log(localStorage.getItem(config.auth.tokenKey), 'sdsdsdsd')
     return localStorage.getItem(config.auth.tokenKey)
   }
 
@@ -45,6 +46,12 @@ export class HttpClient {
   private setAuthToken(token: string): void {
     if (typeof window !== 'undefined') {
       localStorage.setItem(config.auth.tokenKey, token)
+    }
+  }
+
+  private setUserData(user: object): void {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(config.auth.userData, JSON.stringify(user))
     }
   }
 
@@ -221,6 +228,10 @@ export class HttpClient {
    */
   setToken(token: string): void {
     this.setAuthToken(token)
+  }
+
+  setUser(user: object): void {
+    this.setUserData(user)
   }
 
   /**
